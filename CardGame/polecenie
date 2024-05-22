@@ -1,0 +1,21 @@
+50 pkt - projekt indywidualny.
+
+
+Aplikacja powinna być interaktywna z użytkownikiem,
+temat projektu: gra karciana w Python,
+wybór gry do Państwa oceny - proszę jednak wybrać coś gdzie mogą się Państwo popisać swoimi umiejętnościami,
+w tym sama rozgrywka i funkcjonalności jak gra w wiele osób, z komputerem etc.
+(nie koniecznie musi to być tylko przy funkcji random, może też być podstawowy algorytm)
+nie jest wymagany interfejs graficzny - może być uruchamiany w terminalu,
+jednak z funkcjonalnością menu przesłanie projektu wraz z dokumentacją do 04.06 - na assignment
+obrona projektu w dwóch terminach 11. i 18.06 - prezentacja gry i rozwiązania ok. 10 min
+kod zawierać ma większość z przedstawionych w ramach przedmiotu koncepcji, co również powinno zostać przedstawione.
+
+
+Oceniane będzie:
+5 pkt - czytelność dokumentacji i instrukcji gry
+5 pkt - ciekawość prezentacji
+5 pkt - przejrzystość  interface’u (user experience)
+10 pkt - czytelność kodu, zgodność z konwencją
+10 pkt - funkcjonalności prawidłowe z przeznaczeniem
+15 pkt - szerokość w wykorzystaniu koncepcji przedstawionych na zajęciach
