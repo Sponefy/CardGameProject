@@ -1,8 +1,3 @@
-import random
-
-from colored import fg, attr
-
-
 class Card:
 
     def __init__(self, color, value, colorful):
@@ -23,72 +18,40 @@ class Card:
             elif self.color == 3:
                 color_code = '\033[94m'
 
-        print(color_code + self.value + '\033[0m')
+        print(color_code + self.value + '\033[0m', end='')
 
 
-class FunctionCards(Card):
+class FunctionCard(Card):
 
     def __init__(self, color, value, colorful):
         super().__init__(color, value, colorful)
 
-    def perform_action(self):
+    def perform_action(self, players):
         if self.value == '+2':
-            self.plus_two()
+            self.plus_two(players)
         elif self.value == 'Ø':
-            self.block()
+            self.block(players)
         elif self.value == '+4':
-            self.plus_four()
+            self.plus_four(players)
         elif self.value == '🏳‍🌈':
-            self.chagne_color()
+            self.chagne_color(players)
         elif self.value == '🔄':
             self.rotate()
 
-    def plus_two(self):
+    def plus_two(self, players):
         pass
 
-    def block(self):
+    def block(self, players):
         pass
 
-    def plus_four(self):
+    def plus_four(self, players):
         pass
 
-    def chagne_color(self):
+    def chagne_color(self, players):
         pass
 
     def rotate(self):
         pass
 
 
-class Deck:
 
-    def __init__(self):
-
-        card_values = ['1','2', '3', '4', '5', '6', '7', '8', '9', '10', '+2', 'Ø', '+4', '🏳‍🌈', '🔄']
-        colored_cards = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '+2', 'Ø']
-        function_cars = ['+2', 'Ø', '+4', '🏳‍🌈', '🔄']
-
-        card_colors = ['s','h','d','c'] #spades, hearths, dimonds, clubs
-        self.cards = []
-
-        for i in range(4):
-            for j in range(len(card_values)):
-                colorful = True
-                if card_values[j] in colored_cards:
-                    colorful = False
-
-                if card_values[j] in function_cars:
-                    self.cards.append(FunctionCards(i, card_values[j], colorful))
-                else:
-                    self.cards.append(Card(i, card_values[j], colorful))
-
-        random.shuffle(self.cards)
-
-    def show(self):
-
-        for card in self.cards:
-            card.show()
-
-    def get_card(self):
-        card = self.cards[0]
-        self.cards.pop(0)
-        return card
