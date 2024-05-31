@@ -14,7 +14,7 @@ class Player:
         return card
 
     def draw_card(self):
-        self.hand.append(self.deck.get_card())
+        self.hand.cards.append(self.deck.get_card())
 
     def show_hand(self):
         for card in self.hand.cards:
@@ -27,4 +27,19 @@ class Player:
         card_index = input('Wybierz kartę: ')
         self.play_card(card_index)
 
+    def check_hand_for_card(self, current_card):
+        playable_cards = False
+
+        counter = 0
+
+        for card in self.hand.cards:
+            if not (current_card.color != card.color and current_card.value != card.value and card.colorful):
+                counter += 1
+
+        if counter > 0:
+            playable_cards = True
+        else:
+            print("Automatycznie dobrano kartę")
+
+        return playable_cards
 

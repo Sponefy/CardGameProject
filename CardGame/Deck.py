@@ -7,25 +7,27 @@ class Deck:
 
     def __init__(self):
         self.cards = []
+        self.game = None
 
-    def create_new_deck(self):
-        card_values = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '+2', 'Ø', '+4', '🏳‍🌈', '🔄']
-        colored_cards = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '+2', 'Ø']
-        function_cars = ['+2', 'Ø', '+4', '🏳‍🌈', '🔄']
+    def create_new_deck(self, game):
+        card_values = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '+2', 'Ø', '+4', '🏳‍🌈', '§']
+        colored_cards = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '+2', 'Ø', '§']
+        function_cars = ['+2', 'Ø', '+4', '🏳‍🌈', '§']
 
         self.cards = []
+        self.game = game
 
         for _ in range(2):
             for i in range(4):
                 for j in range(len(card_values)):
                     colorful = True
-                    if card_values[j] in colored_cards:
+                    if card_values[j] not in colored_cards:
                         colorful = False
 
                     if card_values[j] in function_cars:
-                        self.cards.append(FunctionCard(i, card_values[j], colorful))
+                        self.cards.append(FunctionCard(i, card_values[j], colorful, game))
                     else:
-                        self.cards.append(Card(i, card_values[j], colorful))
+                        self.cards.append(Card(i, card_values[j], colorful, game))
 
         self.shuffle_deck()
 

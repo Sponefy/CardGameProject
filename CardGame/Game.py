@@ -6,7 +6,7 @@ class Game:
     def __init__(self):
         self.players = []
         self.fresh_deck = Deck()
-        self.fresh_deck.create_new_deck()
+        self.fresh_deck.create_new_deck(self)
 
         self.used_deck = Deck()
         self.current_player = 0
@@ -40,6 +40,8 @@ class Game:
 
         if next_player == self.number_of_players:
             next_player = 0
+        elif next_player == -1:
+            next_player = self.number_of_players - 1
 
         return self.players[next_player]
 
@@ -48,6 +50,8 @@ class Game:
 
         if next_player == self.number_of_players:
             next_player = 0
+        elif next_player == -1:
+            next_player = self.number_of_players - 1
 
         self.current_player = next_player
 
