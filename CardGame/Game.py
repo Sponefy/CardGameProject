@@ -1,5 +1,5 @@
 from Deck import Deck
-from Players import Player
+from Players import Player, Bot
 
 
 class Game:
@@ -17,7 +17,6 @@ class Game:
         self.current_card = self.fresh_deck.get_starting_card()
 
     def add_players(self, number):
-        self.number_of_players = number
 
         for i in range(number):
             player_deck = Deck()
@@ -27,6 +26,16 @@ class Game:
                 player_deck.add_card(self.fresh_deck.get_card())
 
             self.players.append(Player(player_deck, self.fresh_deck))
+
+    def add_bots(self, number):
+        for i in range(number):
+            player_deck = Deck()
+
+            # tworzenie początkowej tali gracza
+            for _ in range(self.number_of_starting_cards):
+                player_deck.add_card(self.fresh_deck.get_card())
+
+            self.players.append(Bot(player_deck, self.fresh_deck))
 
     def change_direction(self):
         self.direction = self.direction * (-1)
