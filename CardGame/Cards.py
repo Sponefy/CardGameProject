@@ -32,13 +32,13 @@ class FunctionCard(Card):
     def __init__(self, color, value, colorful, game):
         super().__init__(color, value, colorful, game)
 
-    def perform_action(self, player):
+    def perform_action(self, player, next_player):
         if self.value == '+2':
-            self.plus_two(player)
+            self.plus_two(next_player)
         elif self.value == 'Ø':
             self.block()
         elif self.value == '+4':
-            self.plus_four(player)
+            self.plus_four(player, next_player)
         elif self.value == '🏳‍🌈':
             self.change_color(player)
         elif self.value == '§':
@@ -55,9 +55,9 @@ class FunctionCard(Card):
         self.skip_player()
         pass
 
-    def plus_four(self, player):
+    def plus_four(self, player, next_player):
 
-        self.give_player_cards(player, 4)
+        self.give_player_cards(next_player, 4)
         self.change_color(player)
         self.skip_player()
         pass
@@ -71,7 +71,16 @@ class FunctionCard(Card):
         from Players import Bot
 
         if isinstance(player, Bot):
-            self.color = random.randint(0, 3)
+            random_color = random.randint(0, 3)
+            self.color = random_color
+            if random_color == 0:
+                print("czerwony")
+            elif random_color == 1:
+                print("zielony")
+            elif random_color == 2:
+                print("żółty")
+            elif random_color == 3:
+                print("niebieski")
         else:
             while True:
                 new_color = int(input('Wybierz kolor: 1 - czerowny, 2 - zielony, 3 - żółty, 4 - niebieski: ')) - 1

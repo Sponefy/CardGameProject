@@ -49,7 +49,7 @@ class Bot(Player):
     def __init__(self, hand, deck):
         super().__init__(hand, deck)
 
-    def play_random_card(self, current_card):
+    def play_random_card(self, current_card, next_player):
         random_card = None
 
         for card in self.hand.cards:
@@ -61,7 +61,7 @@ class Bot(Player):
                 break
 
         if isinstance(random_card, FunctionCard):
-            random_card.perform_action(self)
+            random_card.perform_action(self, next_player)
 
         if random_card is None:
             self.draw_card()

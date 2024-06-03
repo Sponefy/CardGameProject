@@ -52,6 +52,10 @@ while run_game:
                     played_card = current_player.play_card(selected_card_index)
                     game.current_card = played_card
 
+                    if isinstance(played_card, FunctionCard):
+                        played_card.perform_action(current_player, game.get_next_player())
+                        pass
+
                     if len(current_player.hand.cards) == 1:
                         print('UNO!')
                     elif len(current_player.hand.cards) == 0:
@@ -59,16 +63,12 @@ while run_game:
 
                     print()
 
-                    if isinstance(played_card, FunctionCard):
-                        played_card.perform_action(game.get_next_player())
-                        pass
-
                     break
 
     else:
         print('Bot: ' + str(game.current_player + 1))
 
-        played_card = current_player.play_random_card(current_card)
+        played_card = current_player.play_random_card(current_card, game.get_next_player())
         game.current_card = played_card
 
         if len(current_player.hand.cards) == 1:
@@ -76,7 +76,7 @@ while run_game:
         elif len(current_player.hand.cards) == 0:
             game.players.remove(current_player)
 
-    x = input()
+    # x = input()
 
     if len(game.players) > 1:
         game.next_player_turn()
