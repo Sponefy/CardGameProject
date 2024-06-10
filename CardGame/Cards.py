@@ -11,6 +11,7 @@ class Card:
         self.colorful = colorful
         self.game = game
 
+    #wypisywanie wraz z kolorem
     def show(self):
         color_code = '\033[0m'
 

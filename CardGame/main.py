@@ -7,7 +7,7 @@ from Deck import Deck
 game = Game()
 # game.add_players(int(input('Podaj liczbę graczy: ')))
 
-
+# wybieranie ilości graczy
 while True:
     x = int(input('Podaj liczbę graczy: '))
     y = int(input('Podaj liczbę botów: '))
@@ -20,7 +20,7 @@ while True:
 
 run_game = True
 
-
+# pętla odpowiadający za ciągłą grę
 while run_game:
 
     current_player = game.get_current_player()
@@ -29,16 +29,20 @@ while run_game:
     current_card.show()
     print()
 
+    # if rodzielający graczy od potów
     if not isinstance(current_player, Bot):
         print('Gracz: ' + str(game.current_player + 1))
         current_player.show_hand()
 
         playable_cards = current_player.check_hand_for_card(current_card)
 
+        # jeżeli gracz nie ma kart to automatycznie dobierze kartę
         if not playable_cards:
             current_player.draw_card()
             print()
         else:
+
+            # wybieranie kart z tali gracza
             selected_card_index = int(input('Wybierz kartę: ')) - 1
 
             while True:
@@ -66,6 +70,7 @@ while run_game:
                     break
 
     else:
+        # tura bota
         print('Bot: ' + str(game.current_player + 1))
 
         played_card = current_player.play_random_card(current_card, game.get_next_player())
@@ -76,7 +81,7 @@ while run_game:
         elif len(current_player.hand.cards) == 0:
             game.players.remove(current_player)
 
-    # x = input()
+    # sprawdzanie ilości graczy
 
     if len(game.players) > 1:
         game.next_player_turn()

@@ -27,6 +27,7 @@ class Player:
         card_index = input('Wybierz kartę: ')
         self.play_card(card_index)
 
+    # sprawdzenie czy gracz ma kartę, którą może zagrać
     def check_hand_for_card(self, current_card):
         playable_cards = False
 

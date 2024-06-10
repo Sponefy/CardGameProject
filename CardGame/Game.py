@@ -37,6 +37,7 @@ class Game:
 
             self.players.append(Bot(player_deck, self.fresh_deck))
 
+    # odwórócenie kolejności
     def change_direction(self):
         self.direction = self.direction * (-1)
 
@@ -44,6 +45,7 @@ class Game:
         self.fresh_deck = self.used_deck.shuffle_deck()
         self.used_deck = Deck()
 
+    # zwraca kolejnego gracza
     def get_next_player(self):
         next_player = self.current_player + self.direction
 
@@ -54,6 +56,8 @@ class Game:
 
         return self.players[next_player]
 
+
+    # zmienia kolejkę na następnego gracza
     def next_player_turn(self):
         next_player = self.current_player + self.direction
 
